@@ -1,6 +1,6 @@
-# HTML&CSS Basic Task Two
+# HTML&CSS Basic Task Two - CSS入门(part1:基本练习)
 ## 必学内容
-学习https://www.runoob.com/css/css-examples.html中的：
+学习(CSS - 菜鸟教程)[https://www.runoob.com/css/css-examples.html]中的：
   - css教程
   - css简介
   - css id和class选择器：前端主要使用class选择器，id选择器了解即可
@@ -79,5 +79,21 @@ h1{
 使用HTML + CSS实现task.png中的小页面。
 提示：这几个icon， 他们的大小一样， 背景图片的尺寸、相对icon元素的位置、重复模式都一样， 只有图片地址不一样，如何更优雅地实现代码？
 
+### 任务三
+1. 当我们将鼠标放在连接上、点击过链接时， 链接的状态不同时， 会有不同的样式， 我们期望任何时候链接都是黑色无下划线的。请用伪类实现（下面的样例代码没有给出所有的类）
+2. 我们希望实现一个有两层边框的div（大小、边框样式自定）， 不允许在two-color-border内再加html元素，而是使用伪元素实现。
+```html
+<style>
+a{}
+a:hover{}
+/* ...*/
+.two-color-border{}
+</style>
+<a href="https://www.baidu.com">baidu</a>
+<div class="two-color-border"></div>
+```
 # 扩展问题
 + 在class属性里用空格声明多个类会发生什么（考虑多个类之间的优先级相同/不同的情况）？
++ 文本的水平居中和垂直居中可以怎么实现？（学完 CSS3 可以再回来看这个问题, 会有更多答案）
++ margin 和 padding 分别设置为负值会有什么效果？
++ 对行内元素设置 width 和 height 会起作用吗？
