@@ -1,6 +1,6 @@
 # HTML&CSS Basic Task Two - CSS入门(part1:基本练习)
 ## 必学内容
-学习(CSS - 菜鸟教程)[https://www.runoob.com/css/css-examples.html]中的：
+学习[CSS - 菜鸟教程](https://www.runoob.com/css/css-examples.html)中的：
   - css教程
   - css简介
   - css id和class选择器：前端主要使用class选择器，id选择器了解即可
