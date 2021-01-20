@@ -76,7 +76,8 @@ h1{
 <h1>this is h1 outside root too</h1>
 ```
 ### 任务二
-使用HTML + CSS实现task.png中的小页面。
+使用HTML + CSS实现task.png中的小页面。 
+注： 不允许使用img元素， 使用CSS背景实现。
 提示：这几个icon， 他们的大小一样， 背景图片的尺寸、相对icon元素的位置、重复模式都一样， 只有图片地址不一样，如何更优雅地实现代码？
 
 ### 任务三
