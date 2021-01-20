@@ -1,0 +1,45 @@
+<!--当我们将鼠标放在连接上、点击过链接时，链接的状态不同时，会有不同的样式，我们期望任何时候链接都是黑色无下划线的。
+    请用伪类实现（下面的样例代码没有给出所有的类）
+    我们希望实现一个有两层边框的div（大小、边框样式自定），
+    不允许在two-color-border内再加html元素，而是使用伪元素实现。-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task2_3</title>
+    <style>
+        a:link{
+            color: black;
+            text-decoration: none;
+        }
+        a:visited{
+            color: black;
+            text-decoration: none;
+        }
+        a:hover{
+            color: black;
+            text-decoration: none;
+        }
+        a:active{
+            color: black;
+            text-decoration: none;
+        }
+        .two-color-border{
+            border: teal solid 10px;
+            height: 100px;
+            width: 200px;
+        }
+        .two-color-border::before{
+            content: "";
+            border: wheat solid 10px;
+            position: absolute;
+            top: 40px;
+            height: 80px;
+            width: 180px;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.baidu.com">baidu</a>
+    <div class="two-color-border"></div>
+</body>
+</html>

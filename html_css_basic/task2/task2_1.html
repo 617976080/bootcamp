@@ -1,0 +1,55 @@
+<!--猜测：-->
+<!--this is root: black 对-->
+<!--this is class: pink 对-->
+<!--this is important: pink 错red: 子元素选择器优先级比class选择器高-->
+<!--this is style: grey 对-->
+<!--this is h1: red 对-->
+<!--this is h1 too: #ffc 对-->
+<!--this is outside root: #ddd 对-->
+<!--this is outside root too: green 对-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task2_1</title>
+    <style>
+        .root{
+          color:black;
+        }
+        h1{
+          color:blue;
+        }
+        .root h1{
+          color:#ffc
+        }
+        .root>h1{
+          color:red;
+        }
+        .root~h1{
+          color:green;
+        }
+        .root+h1{
+          color:#ddd;
+        }
+        .class{
+          color:pink!important;
+        }
+        .important{
+          color:pink;
+        }
+    </style>
+</head>
+<body>
+    <div class='root'> 
+        this is root
+        <h1 class='class'>this is class</h1>
+        <h1 class='important'>this is important</h1>
+        <h1 style='color:grey'>this is style</h1>
+        <h1>this is h1</h1>
+        <div>
+            <h1> this is h1 too</h1>
+        </div>
+    </div>
+    <h1>this is h1 outside root</h1>
+    <h1>this is h1 outside root too</h1>
+</body>
+</html>
