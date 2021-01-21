@@ -56,4 +56,4 @@
 ### 其他篇
 主要是学习方法、 git的使用之类的东西。
 ## BootCamp用时统计
-1 hour and 40 minutes.
+2 hour and 30 minutes.
