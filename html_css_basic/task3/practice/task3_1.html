@@ -1,0 +1,74 @@
+<!-- 任务一
+    实现一个视频列表区，效果图在同级文件夹下，视频封面图自定，尺寸自定.
+    提示：
+    + 使用flex布局实现。包括不同方块之间的间隙。
+    + 使用absolute和relative组合实现文本覆盖在图像上。
+    + 文本溢出隐藏功能作为扩展练习。 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task3_1</title>
+    <style>
+        .video-list{
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            align-content: space-between;
+            justify-content: space-between;
+            height: 470px;
+            width: 1225px;
+        }
+        .img{
+            background-image: url('1.jpeg');
+            background-repeat: no-repeat;
+            flex-direction: column;
+            position: relative;
+            height: 225px;
+            width: 225px;
+        }
+        .title{
+            position: absolute;
+            top: 200px;
+            z-index: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-list">
+        <div class="img">
+            <div class="title">这是图片的标题这是图片的标题这是图片的标题</div>
+        </div>
+        <div class="img">
+            <div class="title">这是图片的标题这是图片的标题这是图片的标题</div>
+        </div>
+        <div class="img">
+            <div class="title">这是图片的标题这是图片的标题这是图片的标题</div>
+        </div>
+        <div class="img">
+            <div class="title">这是图片的标题这是图片的标题这是图片的标题</div>
+        </div>
+        <div class="img">
+            <div class="title">这是图片的标题这是图片的标题这是图片的标题</div>
+        </div>
+        <div class="img">
+            <div class="title">这是图片的标题这是图片的标题这是图片的标题</div>
+        </div>
+        <div class="img">
+            <div class="title">这是图片的标题这是图片的标题这是图片的标题</div>
+        </div>
+        <div class="img">
+            <div class="title">这是图片的标题这是图片的标题这是图片的标题</div>
+        </div>
+        <div class="img">
+            <div class="title">这是图片的标题这是图片的标题这是图片的标题</div>
+        </div>
+        <div class="img">
+            <div class="title">这是图片的标题这是图片的标题这是图片的标题</div>
+        </div>
+    </div>
+</body>
+</html>
