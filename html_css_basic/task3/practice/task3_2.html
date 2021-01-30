@@ -1,0 +1,165 @@
+<!--实现经典的圣杯和双飞翼布局（即左右两侧定宽，中间自适应），尽可能使用多种方法实现
+注：网上查找资料了解相关概念并尽可能给出多种实现，简单说明不同实现的做法（比如方法A是利用了xxx来实现的，这样去表述）-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task3_2</title>
+    
+    <!-- <style>
+        /* 方法一：float实现 */
+        .container{
+            height: 500px;
+            padding: 0 100px;
+            min-width: 100px;
+            overflow: hidden;
+        }
+        .middle{
+            background-color: cornsilk;
+            float: left;
+            height: 100%;
+            width: 100%;
+        }
+        .left{
+            background-color: cadetblue;
+            float: left;
+            position: relative;
+            left: -100px;
+            height: 100%;
+            width: 100px;
+            margin-left: -100%;
+        }
+        .right{
+            background-color: darkgrey;
+            float: left;
+            position: relative;
+            right: -100px;
+            height: 100%;
+            width: 100px;
+            margin-left: -100px;
+        }
+    </style> -->
+    
+    
+    <!-- <style>
+        /* 方法二：绝对定位实现 */
+        .container{
+            position: relative;
+            overflow: hidden;
+            padding: 0 100px;
+            height: 500px;
+        }
+        .middle{
+            background-color: cornsilk;
+            width: 100%;
+            height: 100%;
+        }
+        .left{
+            background-color: cadetblue;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            height: 100%;
+            width: 100px;
+        }
+        .right{
+            background-color: darkgrey;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            height: 100%;
+            width: 100px;
+        }
+    </style> -->
+
+    
+    <!-- <style>
+        /* 方法三：flex实现 */
+        .container{
+            display: flex;
+            flex: 1;
+            height: 500px;
+        }
+        .middle{
+            background-color: cornsilk;
+            flex: 1;
+        }
+        .left{
+            background-color: cadetblue;
+            order: -1;
+            flex: 0 0 100px;
+        }
+        .right{
+            background-color: darkgrey;
+            flex: 0 0 100px;
+        }
+    </style> -->
+
+    
+    <!-- <style>
+        /* 方法四：gird实现（body部分需要切换一下）*/
+        .container{
+            display: grid;
+            grid-template-columns: 100px 1fr 100px;
+            height: 500px;
+        }
+        .middle{
+            background-color: cornsilk;
+        }
+        .left{
+            background-color: cadetblue;
+        }
+        .right{
+            background-color: darkgrey;
+        }
+    </style> -->
+    
+
+    <!-- <style>
+        /* calc()函数实现（body部分需要切换一下） */
+        .container div{
+            float: left;
+            height: 500px;
+        }
+        .container{
+            min-width: 300px;
+        }
+        .middle{
+            background-color: cornsilk;
+            width: calc(100% - 200px);
+        }
+        .left{
+            background-color: cadetblue;
+            width: 100px;
+        }
+        .right{
+            background-color: darkgrey;
+            width: 100px;
+        }
+    </style> -->
+
+
+    <!-- 参考资料：
+    https://www.jianshu.com/p/f9bcddb0e8b4 
+    https://www.alonehero.com/2020/05/17/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80/
+    https://www.ruanyifeng.com/blog/2015/07/flex-examples.html
+    https://www.ruanyifeng.com/blog/2020/08/five-css-layouts-in-one-line.html
+    https://zhuanlan.zhihu.com/p/34369491 -->
+
+</head>
+<body>
+    <!--方法一、二、三：-->
+    <div class="container">
+        <div class="middle">middle</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+
+    <!--方法四、五：-->
+    <!-- <div class="container">
+        <div class="left">left</div>
+        <div class="middle">middle</div>
+        <div class="right">right</div>
+    </div> -->
+
+</body>
+</html>
