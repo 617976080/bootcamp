@@ -8,11 +8,11 @@
 <html>
 <head>
     <title>task3_1</title>
+    
     <style>
         .video-list{
             display: flex;
             flex-wrap: wrap;
-            position: relative;
             align-content: space-between;
             justify-content: space-between;
             height: 470px;
@@ -27,6 +27,7 @@
             width: 225px;
         }
         .title{
+            display: -webkit-box;
             position: absolute;
             top: 200px;
             z-index: 1;
@@ -36,6 +37,37 @@
             width: 100%;
         }
     </style>
+
+    <!-- float实现就很麻烦，还是用flex香
+        <style>
+        .video-list{
+            float: left;
+            border: 3px solid #e4b9b9;
+            width: 1225px;
+        }
+        .img{
+            float: left;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            background-image: url('1.jpeg');
+            background-repeat: no-repeat;
+            position: relative;
+            height: 225px;
+            width: 225px;
+        }
+        .title{
+            float: left;
+            display: -webkit-box;
+            position: absolute;
+            top: 200px;
+            z-index: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+    </style> -->
+
 </head>
 <body>
     <div class="video-list">
