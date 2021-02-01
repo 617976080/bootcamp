@@ -84,13 +84,13 @@ console.log(regex.test(case2)); // output: false
 ````javascript
 var a = '';
 var b = 'test';
-var x = a && b;
-var y = a || b;
-console.log(x); 
+var x = a && b;// x = ''
+var y = a || b;// y = 'test'
+console.log(x);
 console.log(y);
 
-var p = a || (x = 1);
-var q = b && (b = 2);
+var p = a || (x = 1);// 1 -> x, 1 -> p
+var q = b && (b = 2);// 2 -> b, 2 -> q
 console.log(x);
 console.log(q);
 ````
