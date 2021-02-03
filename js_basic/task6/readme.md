@@ -68,7 +68,7 @@ function mySetInterval(callback, interval){
 ```javascript
 // 修改这段代码， 使得异步输出0~4
 for (var i = 0; i < 5; i++) {
-  setTimeout(() => {
+  setTimeout(function(){
     console.log(i);
   }, 0);
 }
