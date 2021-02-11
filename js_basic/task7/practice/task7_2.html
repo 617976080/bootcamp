@@ -1,0 +1,50 @@
+<!--结合当前学习的dom操作，实现鼠标滑动到封面上时的动效，具体效果见animation.gif。
+    动画部分分别使用CSS动画和JS的计时事件（setTimeout、setInterval）实现。
+提示：使用JS实现动画的时候需要先想清楚计算函数和时间的关系，可以利用Date对象上的方法获得时间戳来计算。-->
+<!--方法一：-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task7_2</title>
+    <style>
+        .box{
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            height: 225px;
+            width: 225px;
+        }
+        .textbox{
+            position: absolute;
+            bottom: 38px;
+            transform: translateY(100%);
+        }
+        .up{
+            position: absolute;
+            transform: translateY(0%);
+            transition: ease-in-out 1s;
+        }
+        .down{
+            position: absolute;
+            transform: translateY(100%);
+            transition: ease-in-out 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" onmouseover="move('up')" onmouseout="move('down')">
+        <img src="../../../html_css_basic/task3/practice/1.jpeg" alt="img"/>
+        <div class="textbox">
+            <p class="text">这是小熊熊这是小熊熊这是小熊熊这是小熊熊这是小熊熊这是小熊熊这是小熊熊</p>
+            <p class="text">这是白云</p>
+            <p class="text">这是蓝天</p>
+        </div>
+    </div>
+    <script>
+        function move(direction){
+            var $textbox = document.getElementsByClassName("textbox");
+            $textbox[0].setAttribute("class", 'textbox '+direction);
+        }
+    </script>
+</body>
+</html>
