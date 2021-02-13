@@ -35,6 +35,8 @@
     <script>
         var PLAY_INTERVAL = 4;
         var FINAL_OPACITY = 0.5;
+        var ON_ANIMATION = '1';
+        var NOT_ON_ANIMATION = '0';
         var $thumbList = document.querySelector('.thumb-list');
         var $items = $thumbList.children;
         Array.prototype.forEach.call($items, function($item){
@@ -45,13 +47,15 @@
 
         function handleItem($item){
             var $mask = $item.querySelector('.mask');
-            playAnimation(function(rate){
+            playAnimation($item, function(rate){
                 console.log(Math.floor(((1 - rate) * 100)));
                 $mask.setAttribute('style', 'transform: translateY(' + Math.floor(((1 - rate) * 100)) +'%); opacity: ' + (rate * FINAL_OPACITY) +';')
             }, 3000)
         }
 
-        function playAnimation(callback, duration){
+        function playAnimation($el, callback, duration){
+            if($el.getAttribute('on-animation') === ON_ANIMATION) return;
+            $el.setAttribute('on-animation', ON_ANIMATION);
             var last = Date.now(), now;
             var elapsed = 0;
             // 这样其实还是不优， 参考： https://developer.mozilla.org/zh-CN/docs/learn/JavaScript/%E5%BC%82%E6%AD%A5/%E8%B6%85%E6%97%B6%E5%92%8C%E9%97%B4%E9%9A%94
@@ -59,9 +63,11 @@
             var timerId = setInterval(function(){
                 var now = Date.now();
                 elapsed += now - last;
+                last = now;
                 callback(elapsed / duration);
                 if(elapsed > duration){
                     clearInterval(timerId);
+                    $el.setAttribute('on-animation', NOT_ON_ANIMATION);
                 }
             }, PLAY_INTERVAL);
         }
