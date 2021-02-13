@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>JS Animation Demo</title>
+<style>
+.thumb-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.thumb-list div{
+    position: relative;
+    width: 170px;
+    height: 96px;
+    background-color: red;
+    overflow: hidden;
+}
+.thumb-list div .mask{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: #000;
+    opacity: 0.5;
+    transform: translateY(100%);
+}
+</style>
+</head>
+<body>
+    <div class="thumb-list">
+        <div>【冰冰vlog.005】这一大盘肉，紧紧拴着东北人的心<div class="mask"></div></div>
+        <div>【医学博士】 喝多了如何快速解酒？I 为什么有的人喝不了酒？<div class="mask"></div></div>
+    </div>
+    <script>
+        var PLAY_INTERVAL = 4;
+        var FINAL_OPACITY = 0.5;
+        var $thumbList = document.querySelector('.thumb-list');
+        var $items = $thumbList.children;
+        Array.prototype.forEach.call($items, function($item){
+            $item.addEventListener('mouseenter', function(){
+                handleItem($item);
+            });
+        });
+
+        function handleItem($item){
+            var $mask = $item.querySelector('.mask');
+            playAnimation(function(rate){
+                console.log(Math.floor(((1 - rate) * 100)));
+                $mask.setAttribute('style', 'transform: translateY(' + Math.floor(((1 - rate) * 100)) +'%); opacity: ' + (rate * FINAL_OPACITY) +';')
+            }, 3000)
+        }
+
+        function playAnimation(callback, duration){
+            var last = Date.now(), now;
+            var elapsed = 0;
+            // 这样其实还是不优， 参考： https://developer.mozilla.org/zh-CN/docs/learn/JavaScript/%E5%BC%82%E6%AD%A5/%E8%B6%85%E6%97%B6%E5%92%8C%E9%97%B4%E9%9A%94
+            // 作业： 改用requestAnimationFrame实现
+            var timerId = setInterval(function(){
+                var now = Date.now();
+                elapsed += now - last;
+                callback(elapsed / duration);
+                if(elapsed > duration){
+                    clearInterval(timerId);
+                }
+            }, PLAY_INTERVAL);
+        }
+    </script>
+</body>
+</html>
