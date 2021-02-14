@@ -1,8 +1,8 @@
 <!--结合当前学习的dom操作，实现鼠标滑动到封面上时的动效，具体效果见animation.gif。
     动画部分分别使用CSS动画和JS的计时事件（setTimeout、setInterval）实现。
 提示：使用JS实现动画的时候需要先想清楚计算函数和时间的关系，可以利用Date对象上的方法获得时间戳来计算。-->
-<!--方法一：-->
-<!DOCTYPE html>
+<!-- 方法一(CSS)： -->
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>task7_2</title>
@@ -45,6 +45,116 @@
             var $textbox = document.getElementsByClassName("textbox");
             $textbox[0].setAttribute("class", 'textbox '+direction);
         }
+    </script>
+</body>
+</html> -->
+
+<!-- 方法二(JS)： -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task7_2</title>
+    <style>
+        .box{
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            height: 225px;
+            width: 225px;
+        }
+        .textbox{
+            position: absolute;
+            top: 185px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../../../html_css_basic/task3/practice/1.jpeg" alt="img"/>
+        <div class="textbox">
+            <p>这是小熊熊这是小熊熊这是小熊熊这是小熊熊这是小熊熊这是小熊熊这是小熊熊</p>
+            <p>这是白云</p>
+            <p>这是蓝天</p>
+        </div>
+    </div>
+    <script>
+        // var $textbox = document.getElementsByClassName("textbox");
+        // // textbox 需要每隔多长时间移动多长距离。
+        // // 时间和距离的关系如何确定？
+        // var pos = $textbox[0].offsetTop;
+        // $textbox[0].addEventListener("mouseup", function(){
+            //     console.log(pos);
+            //     // var move = setInterval(function(){
+                //         // pos += 10;
+                //         $textbox[0].style.top = pos+"px";
+                //         console.log(pos);
+                //         // if(progress === 100) clearInterval(move);
+                //     // }, 500); // 这里写多少？
+                // });
+                // $textbox[0].addEventListener("mouseenter", function(){
+                    // console.log(pos);
+                    //     // var move = setInterval(function(){
+                        //         // pos += 10;
+                        //         $textbox[0].style.top = pos + "px";
+                        //         console.log(pos);
+                        //         // if(progress === 100) clearInterval(move);
+                        //     // }, 500); // 这里写多少？
+                        // });
+        var $boxs = document.getElementsByClassName("box");
+        var $textboxs = document.getElementsByClassName("textbox");
+        var stateUp = 0, stateDown = 0, ON_ANIMATION = 1, NOT_ON_ANIMATION = 0;
+
+        Array.prototype.forEach.call($boxs, function($box){
+            handleItem($box);
+        });
+        
+        function handleItem($items){
+            Array.prototype.forEach.call($items.children, function($item){
+                if($item.getAttribute("class") === "textbox"){
+                    $items.addEventListener("mouseenter", function(){
+                        playUpAnimation($item);
+                    });
+                    $items.addEventListener("mouseout", function(){
+                        playDownAnimation($item);
+                    });
+                }
+            });
+        }
+
+        function playUpAnimation(elem){
+            if(stateUp === ON_ANIMATION) return;
+            if(stateDown === ON_ANIMATION) return;
+            stateUp = ON_ANIMATION;
+            var startTime1 = Date.now();
+            var duration1 = 1000, now1, rate1;
+            var timerId = setInterval(function(){
+                now1 = Date.now();
+                rate1 = (now1 - startTime1) / duration1;
+                elem.setAttribute("style", "top: " + 185 * (1 - rate1) + "px;");
+                if(rate1 >= 1) {
+                    stateUp = NOT_ON_ANIMATION;
+                    clearInterval(timerId);
+                }
+            }, 4);
+        }
+        
+        function playDownAnimation(elem){
+            if(stateDown === ON_ANIMATION) return;
+            if(stateUp === ON_ANIMATION) return;
+            stateDown = ON_ANIMATION;
+            var startTime2 = Date.now();
+            var duration2 = 1000, now2, rate2;
+            var timerId = setInterval(function(){
+                now2 = Date.now();
+                rate2 = (now2 - startTime2) / duration2;
+                elem.setAttribute("style", "top: " + 185 * rate2 + "px;");
+                if(rate2 >= 1) {
+                    stateDown = NOT_ON_ANIMATION;
+                    clearInterval(timerId);
+                }
+            }, 4);
+        }
+
     </script>
 </body>
 </html>

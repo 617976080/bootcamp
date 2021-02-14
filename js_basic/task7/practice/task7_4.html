@@ -85,57 +85,68 @@
         </div>
     </div>
     <script>
-        // ok 实现页面：一个容器包含：图片+五个小圆点+左右切换的小三角
+        // 实现页面：一个容器包含：图片+五个小圆点+左右切换的小三角
         // 向右(如果可以的话)：小圆点变灰，右边一个小圆点变红，图片向左移动一个。向左同理
         var $imgs = document.getElementsByTagName("img");
         var $dots = document.getElementsByClassName("dot");
         var $left = document.getElementsByClassName("left");
         var $right = document.getElementsByClassName("right");
         var $imgbox = document.getElementsByClassName("imgbox");
-
+        var RIGHT_BOUNDARY = -2000, LEFT_BOUNDARY = 0;
+        var waitToPlay = setTimeout(function(){
+            autoPlay();
+        }, 5000);
         $imgbox[0].style.left = "0px";
         $dots[0].setAttribute("class", "dot reddot");
-        $right[0].addEventListener("click", function(){
-            if(parseInt($imgbox[0].style.left)!==-2000){
-                $imgbox[0].setAttribute("class", "imgbox "+"imgbox move");
-                var newDist = parseInt($imgbox[0].style.left)-500;
+        function play(eventTarget, boundary, dir){
+            if(parseInt($imgbox[0].style.left) !== boundary){
+                // 设置imgbox的新位置newDist
+                $imgbox[0].setAttribute("class", "imgbox " + "imgbox move");
+                var newDist = parseInt($imgbox[0].style.left) + 500 * dir;
                 $imgbox[0].style.left = newDist + "px";
+                // 消除小方块的颜色
                 Array.prototype.forEach.call($dots, function(elem, i){
                     elem.setAttribute("class", "dot");
                 });
+                // 和图片序号对应的小方块变红
                 Array.prototype.forEach.call($dots, function(elem, i){
-                    if(i===-newDist/500){
+                    if(i === -newDist / 500){
                         $dots[i].setAttribute("class", "dot reddot");
                     }
                 });
+            }else if(boundary === LEFT_BOUNDARY){
+                $imgbox[0].style.left = RIGHT_BOUNDARY + "px";
+                $dots[0].setAttribute("class", "dot");
+                $dots[4].setAttribute("class", "dot reddot");
+            }else{
+                $imgbox[0].style.left = LEFT_BOUNDARY + "px";
+                $dots[4].setAttribute("class", "dot");
+                $dots[0].setAttribute("class", "dot reddot");
             }
-        });
-        $left[0].addEventListener("click", function(){
-            if(parseInt($imgbox[0].style.left)!==0){
-                $imgbox[0].setAttribute("class", "imgbox "+"imgbox move");
-                var newDist = parseInt($imgbox[0].style.left)+500;
-                $imgbox[0].style.left = newDist + "px";
-                Array.prototype.forEach.call($dots, function(elem, i){
-                    elem.setAttribute("class", "dot");
-                });
-                Array.prototype.forEach.call($dots, function(elem, i){
-                    if(i===-newDist/500){
-                        $dots[i].setAttribute("class", "dot reddot");
-                    }
-                });
-            }
-        });
-        
-        // // 为什么抽象成函数就不行了呢？明明是一样的呀
-        // function move(dist, addAttrName){
-        //     $imgbox[0].setAttribute("class", "imgbox "+addAttrName);
-        //     var newDist = parseInt($imgbox[0].style.left)+dist;
-        //     $imgbox[0].style.left = newDist + "px";
-        // }
-        // $left[0].addEventListener("click", move(-500, "moveLeft"));
-        // $right[0].addEventListener("click", move(500, "moveRight"));
+        }
+        function move(eventTarget, boundary, dir){
+            eventTarget.addEventListener("click", function(){
+                play(eventTarget, boundary, dir);
+                clearInterval(waitToPlay);
+                clearInterval(timerId);
+                waitToPlay = setTimeout(function(){
+                    autoPlay();
+                }, 5000);
+            })
+        }
 
+        move($right[0], RIGHT_BOUNDARY, -1);
+        move($left[0], LEFT_BOUNDARY, 1);
 
+        // 自动播放：autoPlay
+        // setInterval
+        // 如果没有鼠标监听事件，就自动播放
+
+        function autoPlay(){
+            var timerId = setInterval(function(){
+                play($right[0], RIGHT_BOUNDARY, -1);
+            }, 4000);
+        }
         </script>
 </body>
 </html>

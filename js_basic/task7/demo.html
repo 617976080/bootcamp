@@ -48,18 +48,18 @@
         function handleItem($item){
             var $mask = $item.querySelector('.mask');
             playAnimation($item, function(rate){
-                console.log(Math.floor(((1 - rate) * 100)));
-                $mask.setAttribute('style', 'transform: translateY(' + Math.floor(((1 - rate) * 100)) +'%); opacity: ' + (rate * FINAL_OPACITY) +';')
+                // console.log(Math.floor(((1 - rate) * 100)));
+                $mask.setAttribute('style', 'transform: translateY(' + Math.max(Math.floor(((1 - rate) * 100)), 0) +'%); opacity: ' + (rate * FINAL_OPACITY) +';')
             }, 3000)
         }
 
         function playAnimation($el, callback, duration){
             if($el.getAttribute('on-animation') === ON_ANIMATION) return;
             $el.setAttribute('on-animation', ON_ANIMATION);
-            var last = Date.now(), now;
+            var last = Date.now();
             var elapsed = 0;
-            // 这样其实还是不优， 参考： https://developer.mozilla.org/zh-CN/docs/learn/JavaScript/%E5%BC%82%E6%AD%A5/%E8%B6%85%E6%97%B6%E5%92%8C%E9%97%B4%E9%9A%94
-            // 作业： 改用requestAnimationFrame实现
+            // 这样其实还是不优，参考：https://developer.mozilla.org/zh-CN/docs/learn/JavaScript/%E5%BC%82%E6%AD%A5/%E8%B6%85%E6%97%B6%E5%92%8C%E9%97%B4%E9%9A%94
+            // 作业：改用requestAnimationFrame实现
             var timerId = setInterval(function(){
                 var now = Date.now();
                 elapsed += now - last;
