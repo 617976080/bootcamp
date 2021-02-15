@@ -1,4 +1,4 @@
-# React Basic Task One - React入门(Part1: 环境构建)
+# React Basic Task One - React入门(Part1: 环境构建和初次上手)
 
 ## 必学内容
 ### 了解
@@ -19,3 +19,10 @@
 
 ### 任务二：React入门
 看一遍基本概念后，看官方的tutorial，这个过程中遇到不会的回去翻main concepts或者去翻官方的api，跟着tutorial完成任务（代码写在使用CRA创建的工程里）。
+
+## 扩展资料
++ [concepts - webpack](https://webpack.js.org/concepts/): 简单看看webpack官网， 了解下webpack是什么
++ [babel](https://babeljs.io/): 简单了解下babel
+
+## 扩展问题
+* nodejs给前端带来了怎样的改变？为什么我们要使用webpack和babel(可以理解成CRA帮你使用了它们并做了一些配置，让你无感知地使用)。
