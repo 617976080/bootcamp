@@ -1,4 +1,4 @@
-# JS Basic Task One - JS入门(Part4: 异步编程)
+# JS Basic Task Five - JS入门(Part5: ES6入门)
 
 ## 必学内容
 + [ES6 入门教程](https://es6.ruanyifeng.com/): 阮一峰大佬的入门ES6。 按照下面的课程任务来分段学习和完成小练习。 没有提到的部分跳过或有兴趣可以看一看。

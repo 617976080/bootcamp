@@ -1,4 +1,4 @@
-# JS Basic Task One - JS入门(Part3: Dom)
+# JS Basic Task Three - JS入门(Part3: Dom)
 
 ## 必学内容
 + [JavaScript Dom](https://www.runoob.com/js/js-htmldom.html): 学习JS操作DOM， 遇到问题在MDN上查对应API的更多详细信息

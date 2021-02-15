@@ -1,4 +1,4 @@
-# JS Basic Task One - JS入门(Part4: 异步编程)
+# JS Basic Task Four - JS入门(Part4: 异步编程)
 
 ## 必学内容
 + [JavaScript AjAx](https://www.runoob.com/js/js-async.html): 看完后完成任务一、任务二。（注：如果本地运行出现跨域问题， 就在菜鸟教程的演示里改代码吧）
