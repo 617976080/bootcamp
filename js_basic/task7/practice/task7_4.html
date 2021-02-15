@@ -1,0 +1,152 @@
+<!--完成一个轮播图，效果见swiper.gif。其实它只是在简单选项卡的基础上增加自动播放以及左右切换的效果。
+    不要求使用JS来实现动画（感兴趣也可以试一下）。-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task7_4</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            position: relative;
+            height: 313px;
+            width: 500px;
+            border: 15px solid steelblue;
+            overflow: hidden;
+        }
+        .imgbox{
+            position: absolute;
+            height: 313px;
+            width: 500px;
+            left: 0;
+            display: flex;
+            z-index: -1;
+        }
+        .left{
+            height: 40px;
+            width: 20px;
+            position: absolute;
+            top: 130px;
+            background-image: url('left.png');
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
+        .right{
+            height: 40px;
+            width: 20px;
+            position: absolute;
+            right: 0;
+            top: 130px;
+            background-image: url('right.png');
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
+        .dotbox{
+            position: absolute;
+            height: 10px;
+            width: 90px;
+            bottom: 10px;
+            left: 220px;
+        }
+        .dot{
+            float: left;
+            background-color: #fff;
+            margin-right: 8px;
+            height: 10px;
+            width: 10px;
+        }
+        .reddot{
+            background-color: firebrick;
+        }
+        .move{
+            transition: ease-in-out 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="imgbox">
+            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1148167645,3692391316&fm=26&gp=0.jpg" alt="img" />
+            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1148167645,3692391316&fm=26&gp=0.jpg" alt="img" />
+            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1148167645,3692391316&fm=26&gp=0.jpg" alt="img" />
+            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1148167645,3692391316&fm=26&gp=0.jpg" alt="img" />
+            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1148167645,3692391316&fm=26&gp=0.jpg" alt="img" />
+        </div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="dotbox">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+    <script>
+        // 实现页面：一个容器包含：图片+五个小圆点+左右切换的小三角
+        // 向右(如果可以的话)：小圆点变灰，右边一个小圆点变红，图片向左移动一个。向左同理
+        var $imgs = document.getElementsByTagName("img");
+        var $dots = document.getElementsByClassName("dot");
+        var $left = document.getElementsByClassName("left");
+        var $right = document.getElementsByClassName("right");
+        var $imgbox = document.getElementsByClassName("imgbox");
+        var RIGHT_BOUNDARY = -2000, LEFT_BOUNDARY = 0;
+        var waitToPlay = setTimeout(function(){
+            autoPlay();
+        }, 5000);
+        $imgbox[0].style.left = "0px";
+        $dots[0].setAttribute("class", "dot reddot");
+        function play(eventTarget, boundary, dir){
+            if(parseInt($imgbox[0].style.left) !== boundary){
+                // 设置imgbox的新位置newDist
+                $imgbox[0].setAttribute("class", "imgbox " + "imgbox move");
+                var newDist = parseInt($imgbox[0].style.left) + 500 * dir;
+                $imgbox[0].style.left = newDist + "px";
+                // 消除小方块的颜色
+                Array.prototype.forEach.call($dots, function(elem, i){
+                    elem.setAttribute("class", "dot");
+                });
+                // 和图片序号对应的小方块变红
+                Array.prototype.forEach.call($dots, function(elem, i){
+                    if(i === -newDist / 500){
+                        $dots[i].setAttribute("class", "dot reddot");
+                    }
+                });
+            }else if(boundary === LEFT_BOUNDARY){
+                $imgbox[0].style.left = RIGHT_BOUNDARY + "px";
+                $dots[0].setAttribute("class", "dot");
+                $dots[4].setAttribute("class", "dot reddot");
+            }else{
+                $imgbox[0].style.left = LEFT_BOUNDARY + "px";
+                $dots[4].setAttribute("class", "dot");
+                $dots[0].setAttribute("class", "dot reddot");
+            }
+        }
+        function move(eventTarget, boundary, dir){
+            eventTarget.addEventListener("click", function(){
+                play(eventTarget, boundary, dir);
+                clearInterval(waitToPlay);
+                clearInterval(timerId);
+                waitToPlay = setTimeout(function(){
+                    autoPlay();
+                }, 5000);
+            })
+        }
+
+        move($right[0], RIGHT_BOUNDARY, -1);
+        move($left[0], LEFT_BOUNDARY, 1);
+
+        // 自动播放：autoPlay
+        // setInterval
+        // 如果没有鼠标监听事件，就自动播放
+
+        function autoPlay(){
+            var timerId = setInterval(function(){
+                play($right[0], RIGHT_BOUNDARY, -1);
+            }, 4000);
+        }
+        </script>
+</body>
+</html>

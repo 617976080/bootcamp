@@ -1,0 +1,65 @@
+<!--参考tab.gif实现，注意默认有一个初始选项卡是展示的（比如例子里默认展示最新这个tab）-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task7_3</title>
+    <style>
+        .title{
+            display: inline;
+            margin-right: 20px;
+        }
+        .content{
+            display: block;
+            margin-top: 10px;
+        }
+        .show{
+            display: inline;
+            border-bottom: 3px solid rgb(16, 174, 226);
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="title">周一</div>
+        <div class="title">周二</div>
+        <div class="title">周三</div>
+        <div class="title">周四</div>
+        <div class="title">周五</div>
+        <div class="content">内容1</div>
+        <div class="content">内容2</div>
+        <div class="content">内容3</div>
+        <div class="content">内容4</div>
+        <div class="content">内容5</div>
+    </div>
+    <script>
+        var $title = document.getElementsByClassName("title");
+        var $content = document.getElementsByClassName("content");
+        $title[0].setAttribute("class", "title show");
+        Array.prototype.map.call($content, function(elem){
+            elem.style.display = "none";
+        });
+        $content[0].style.display = "block";
+        // Array.prototype.forEach.bind($title)(function(elem){
+        //     console.log(elem);
+        // });
+        // Array.prototype.forEach.apply($title, [function(elem){
+        //     console.log(elem);
+        // }]);
+
+        Array.prototype.forEach.call($title, function(elem, index){
+            elem.addEventListener("click", function(){
+                Array.prototype.forEach.call($title, function(t){
+                    t.setAttribute("class", "title");
+                });
+                elem.setAttribute("class", "title show");
+                Array.prototype.forEach.call($content, function(c){
+                    c.style.display = "none";
+                });
+                $content[index].style.display = "block";
+            })
+        });
+
+
+    </script>
+</body>
+</html>
