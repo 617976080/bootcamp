@@ -1,0 +1,71 @@
+<!--前面虽然封装了fetch，但是没有用上promise，有回调地狱问题，需要在callback里再调一个fetch，很丑陋。
+    学习了promise，我们就可以进一步优化fetch函数，它返回一个promise对象。然后使用新的fetch函数再次完成任务一、任务三。
+```javascript
+function fetch(url){
+  //....
+  return new Promise() // 省略部分代码
+}
+
+//调用效果
+fetch("https://www.runoob.com/try/ajax/ajax_info.txt").then(function(response){
+  console.log(response);
+});
+
+// 同样的输出，不再赘述
+```-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task8_4</title>
+    <script>
+        function loadXMLDoc1(){
+            fetch("https://www.runoob.com/try/ajax/ajax_info.txt")
+            .then(function(response){
+                console.log("1 " + response);
+                return fetch("https://www.runoob.com/try/ajax/ajax_info.txt")
+            })
+            .then(function(response){
+                console.log("2 " + response);
+            })
+        }
+        function loadXMLDoc2(){
+            // Promise.all
+            Promise.all([fetch("https://www.runoob.com/try/ajax/ajax_info.txt")
+            .then(function(response){
+                console.log("1 " + response);
+            }),
+            fetch("https://www.runoob.com/try/ajax/ajax_info.txt")
+            .then(function(response){
+                console.log("2 " + response);
+            })])
+            .then(function(){
+                fetch("https://www.runoob.com/try/ajax/ajax_info.txt")
+                .then(function(response){
+                    console.log("3 " + response);
+                });
+            })
+        }
+        function fetch(url){
+            var xmlhttp;
+            if(window.XMLHttpRequest){
+                xmlhttp = new XMLHttpRequest();
+            }else{
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+            return new Promise(function(resolve, reject){
+                xmlhttp.onreadystatechange = function(){
+                    if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
+                        resolve(xmlhttp.responseText);
+                    }
+                }
+            });
+        }
+        </script>
+</head>
+<body>
+    <button onclick="loadXMLDoc1()">重写任务一</button>
+    <button onclick="loadXMLDoc2()">重写任务三</button>
+</body>
+</html>

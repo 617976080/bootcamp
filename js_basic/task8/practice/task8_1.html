@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task8_1</title>
+    <script>
+        // 点击按钮之后发送第一个请求
+        // 收到之后控制台打印,并发送第二个请求
+        function loadXMLDoc(){
+            var xmlhttp;
+            if(window.XMLHttpRequest){
+                xmlhttp = new XMLHttpRequest();
+            }else{
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
+                    console.log(xmlhttp.responseText);
+                    loadNext();
+                }
+            }
+            xmlhttp.open("GET", "https://www.runoob.com/try/ajax/demo_get.php", true);
+            xmlhttp.send();
+        }
+        function loadNext(){
+            var xmlhttp;
+            if(window.XMLHttpRequest){
+                xmlhttp = new XMLHttpRequest();
+            }else{
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
+                    console.log(xmlhttp.responseText);
+                }
+            }
+            xmlhttp.open("GET", "https://www.runoob.com/try/ajax/demo_get.php", true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <button onclick="loadXMLDoc()">发送请求</button>
+</body>
+</html>
