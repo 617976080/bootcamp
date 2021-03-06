@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>task8_2</title>
+    <script>
+        function loadXMLDoc(){
+            fetch("https://www.runoob.com/try/ajax/demo_get.php", function(responseText){
+                update();
+                console.log(responseText);
+            });
+            fetch("https://www.runoob.com/try/ajax/demo_get.php", function(responseText){
+                update();
+                console.log(responseText);
+            });
+            function update(){
+                update.flag = update.flag || 0;
+                if(++update.flag === 2) {
+                    fetch("https://www.runoob.com/try/ajax/demo_get.php", function(responseText){
+                        console.log(responseText);
+                    });
+                }
+            }
+        }
+        function fetch(url, callback){
+            var xmlhttp;
+            if(window.XMLHttpRequest){
+                xmlhttp = new XMLHttpRequest();
+            }else{
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
+                    callback(xmlhttp.responseText);
+                }
+            }
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <button onclick="loadXMLDoc()">发送请求</button>
+</body>
+</html>
