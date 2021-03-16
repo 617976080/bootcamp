@@ -1,0 +1,70 @@
+.top_light{
+    height:44px;
+    padding:8px 16px 8px 16px;
+    width:100%;
+    display: flex;
+    border-bottom: 1px solid grey;
+}
+.top_dark{
+    height:44px;
+    padding:8px 16px 8px 16px;
+    width:100%;
+    display: flex;
+    background-color:grey ;
+    border-bottom: 1px solid grey
+}
+.left_nav{
+    width:50%;
+    
+}
+.right_nav{
+    width:50%;
+    position: absolute;
+    left:50%;
+    height:44px;
+    line-height:44px;
+}
+.link_github{
+    position: absolute;
+    left:100px;
+}
+.link_chineseweb{
+    position: absolute;
+    left:200px;
+}
+.search{
+    position: absolute;
+    top:12px;
+    left:400px;
+    width:100px;
+}
+.activeButton{
+    color:#1E90FF
+}
+.unactiveButton{
+    color:black;
+}
+.button1{
+    position: absolute;
+    left:645px;
+    cursor: pointer;
+    top:10px;
+}
+.button2{
+    position: absolute;
+    left:600px;
+    cursor: pointer;
+    top:10px;
+}    
+.main_wrapper{
+    position: relative;
+    width:100%;
+    height:2000px;
+    margin:0px;
+}
+.main_light{
+    background-color: white;
+}
+.main_dark{
+    background-color: black;
+}
