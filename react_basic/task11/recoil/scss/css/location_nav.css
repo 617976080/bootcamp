@@ -1,0 +1,26 @@
+.right_container {
+  position: fixed;
+  height: auto;
+  width: 100%;
+  z-index: 3;
+  left: 90rem;
+  top: 100px;
+  border-left: 0.5px solid grey;
+}
+
+.right_nav {
+  position: relative;
+  list-style: none;
+  left: 20px;
+  cursor: pointer;
+  color: #606770;
+}
+
+.isSelected {
+  color: #3578E5;
+}
+
+ul {
+  padding: 0px;
+}
+/*# sourceMappingURL=location_nav.css.map */

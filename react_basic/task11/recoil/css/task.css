@@ -1,9 +1,12 @@
-.top_light{
+.top-nav{
     height:44px;
     padding:8px 16px 8px 16px;
-    width:100%;
+    width:100vw;
     display: flex;
     border-bottom: 1px solid grey;
+    position:fixed;
+    z-index:2;
+    background-color: white;
 }
 .top_dark{
     height:44px;
@@ -11,7 +14,9 @@
     width:100%;
     display: flex;
     background-color:grey ;
-    border-bottom: 1px solid grey
+    border-bottom: 1px solid grey;
+    position:fixed;
+    z-index:2;
 }
 .left_nav{
     width:50%;
@@ -59,12 +64,18 @@
 .main_wrapper{
     position: relative;
     width:100%;
-    height:2000px;
+    height:auto;
     margin:0px;
+    top:60px;
 }
 .main_light{
     background-color: white;
 }
 .main_dark{
+    background-color: black;
+}
+.footer{
+    width:100%;
+    height:420px;
     background-color: black;
 }

@@ -1,0 +1,17 @@
+
+.tab_container{
+    position: sticky;
+    top:70px;
+    margin: 0px;
+    width:270px;
+    height:900px;
+    
+}
+.left_bar{
+   height:100%;
+   width:270px;
+}
+.left_part{
+    height:auto;
+    border-right:1px solid#dadde1;
+}

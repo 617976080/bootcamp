@@ -1,0 +1,32 @@
+.doc_light{
+    width:100%;
+    background-color: white;
+    height: 2000px;
+}
+.doc_dark{
+    width:100%;
+    background-color: white;
+    height: 2000px;
+}
+.class_doc{
+    display: flex;
+    flex-direction: row;
+    width:100vw;
+    height:auto
+}
+.essay_part{
+    min-width: 1000px;
+    min-height:1000px;
+    width:auto;
+    position: relative;
+    
+    height:auto;
+    overflow-x:hidden;
+    overflow-y: auto;
+}
+.essay_part::-webkit-scrollbar{
+    display:none;
+    }
+.tab_container{
+    position: fixed;
+}

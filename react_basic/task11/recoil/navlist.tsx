@@ -5,7 +5,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import './navlist.css';
+import './css/navlist.css';
 import Doc from './doc';
 export default class Navlist extends React.Component<any, any>{
     constructor(props: any) {
@@ -36,7 +36,7 @@ export default class Navlist extends React.Component<any, any>{
                 <Switch>
                     <Route exact path='/Recoil'>
                     </Route>
-                    <Route path='/Docs'>
+                    <Route exact path='/Docs'>
                         <Doc />
                     </Route>
                     <Route path='/Blog'>

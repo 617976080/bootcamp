@@ -1,5 +1,5 @@
 import React from 'react';
-import './essay_nav.css';
+import './css/essay_nav.css';
 import {
     BrowserRouter as Router,
     Switch,
@@ -22,40 +22,32 @@ export default class Essay_nav extends React.Component<any, any>{
         })
     }
     render() {
-        let title = this.props.title;
-        let Li = this.props.secondaryTitle.map((element: string) =>
+        const title = this.props.title;
+        const path = this.props.route_path;
+        const Li = this.props.object.map((element: any) =>
             <li onClick={() => {
-                this.handleChange(element)
-                this.props.handleChange(title)
+                this.handleChange(element.secondaryTitle);
+                this.props.handleChange(title);
             }}
-                style={{ listStyle: 'none', fontSize: '18px' }}
+                style={{ listStyle: 'none', fontSize: '18px',color:'black'}}
                 className='hover'>
-                <Link to={'/' + element}
+                <Link to={element.path}
                     id={this.props.selectedKey == title && this.state.selectedKey == element ? 'selectedKey' : 'unselectedKey'}
-                    className={this.props.theme == 'light' ? 'tab_li_light' : 'tab_li_dark'}>
-                    {element}
+                    >{element.secondaryTitle}
                 </Link></li>);
-        const route = this.props.route.map((element: any) =>
-            <Route exact path={element.path}>
-            </Route>)
         return (
             <Router>
                 <div className='sidebar'>
                     <div className={this.state.isListVisualized ? 'a_container showlist' : 'a_container noshowlist'}
                         onClick={() => this.setState({ isListVisualized: !this.state.isListVisualized })}>
                         <a>
-                            <Link to={'/' + title}
-                                id={this.props.selectedKey == title ? 'selected_a' : 'unselected_a'}
-                                className={this.props.theme == 'light' ? 'tab_li_light' : 'tab_li_dark'}>{title}</Link>
+                           {title}
                         </a>
                     </div>
                     <ul className={this.state.isListVisualized ? 'show' : 'hide'}>
                         {Li}
                     </ul>
                 </div>
-                <Switch>
-                    {route};
-                </Switch>
             </Router>
 
 
