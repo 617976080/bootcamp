@@ -1,0 +1,23 @@
+.navlist{
+    height:50px;
+    line-height:50px;
+    position: fixed;
+    width:100%;
+    
+}
+.navlist_ele{
+    display: inline-block;
+    width:auto;
+    padding: 0px 10px 0px 10px;
+    text-align:center;
+    text-decoration: none;
+}
+.word_white{
+     color:white;
+}
+.word_black{
+    color:black;
+}
+#selected{
+    color:#3578e5;
+}
