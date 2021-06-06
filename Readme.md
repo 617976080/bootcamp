@@ -92,4 +92,4 @@
 
 ## BootCamp用时统计
 
-6 hour and 20minutes.
+6 hour and 40minutes.
