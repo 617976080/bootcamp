@@ -6,7 +6,10 @@
 + [HOC - React](https://reactjs.org/docs/higher-order-components.html)
 ## 课程任务
 ### 任务一
-模仿实现页面[介绍 - recoil官网](https://recoiljs.org/docs/introduction/installation)， 不要求实现代码块的高亮和右边的目录自动跟踪高亮功能。
-要实现点击按钮切换主题色功能，具体演示效果见demo.gif。
+模仿实现下拉菜单[demo](https://wpblogdesigner.net/showcases/)， 注意有吸顶功能。
+简化一下： 只需要实现滑动出现下拉框，并且位置正确即可，无需考虑动画。
+提示：
+* CSS绝对布局、fixed布局。
+
 ### 任务二
-看完《Fragments - React》和《HOC - React》，简单说说它们是用来解决什么问题的（暂时没有比较合适的练习）。后面用到一些库，比如React-router、Redux的时候会涉及HOC。
+完成任务一后， 在菜单下面增加一个绝对布局，z-index比菜单的弹出元素z-index要高的元素，看看会发生什么， 怎么解决？
