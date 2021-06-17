@@ -66,20 +66,6 @@ console.log(a);
 
 **思考：既然有这样的问题， 写代码的时候要注意什么。 函数参数传递以及在函数内部使用一个数组、对象的时候要注意什么** 
 
-#### 怎样判断一个变量的类型 typeof 可以判断数组和对象的类型吗 instanceof 可以判断基础类型吗 还有什么别的方式
-
-#### 使用 Date 对象，写一个函数打印当前时间，以'2018-09-12'这样的格式
-
-#### 写一个正则表达式判断一个字符串是不是一个合法的div元素
-
-```javascript
-var regex = //; // 补充完整
-var case1 = '<div>test content</div>';
-var case2 = '<div>test content';
-console.log(regex.test(case1)); // output: true
-console.log(regex.test(case2)); // output: false
-
-```
 #### 说出下列输出的值。
 ````javascript
 var a = '';
@@ -115,7 +101,3 @@ for(var i = 0, l = a.length; i < l; ++i){
 }
 console.log(cnt2); // 输出多少？
 ```
-
-## 扩展问题
-+ JavaScript和C、Java有什么区别？ 比如关于基本数据类型、 对象等等，发散开来可以从任何方面回答。
-

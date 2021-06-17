@@ -13,6 +13,7 @@
 
 ## 课程任务
 ### 任务一：内置对象API运用练习，补充function中的代码
+提示： reduce、for循环、 foreach
 ```javascript
 // 1. 求一个数组中所有元素的乘积，试着用不同的方法来做，尽量让代码简洁易读
 function getResult(arr){
@@ -58,7 +59,7 @@ for (var i = 0; i < 5; i++) {
 
 // 如果和设想的不一样， 想想这个程序每个语句的运行顺序？， 不能理解的话参考扩展资料中的【并发模型与事件循环 - MDN】 后面将会有解决这个问题的练习
 
-// 能否使用setTimeout来实现setInterval? 提示：利用闭包。有点难， 20分钟没写出来就放弃吧~等参考答案。
+// 能否使用setTimeout来实现setInterval? 提示：利用闭包。有点难， 1小时没写出来就放弃吧~等参考答案。
 function mySetInterval(callback, interval){
   // ...
 }
