@@ -19,11 +19,11 @@
 
 ```javascript
 let a = "";
-a = "a";
-a = null;
-a = undefined;
-a = 0;
-a = NaN;
+a = "a"; //1
+a = null; //2
+a = undefined; //2
+a = 0; //2
+a = NaN; //2
 if (a) {
   console.log(1);
 } else {

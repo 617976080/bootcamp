@@ -62,18 +62,33 @@
 
 
         // 能否使用setTimeout来实现setInterval? 提示：利用闭包。有点难， 1小时没写出来就放弃吧~等参考答案。
-        function mySetInterval() {
-            console.log("A");
-            setTimeout(mySetInterval, 2000);
+
+        function mySetInterval(callback, time) {
+            let id;
+            function perm() {
+                callback();
+                id = setTimeout(perm, time);
+            }
+            perm();
+            return id;
         }
-        mySetInterval();
+
+        function myClearInterval(id) {
+            clearTimeout(id);
+        };
+
+        let timerId = mySetInterval(()=>{
+            console.log('B');
+        }, 1000);
+
+        myClearInterval(timerId);
 
         // ### 任务三： 运用bind、call、apply
         // 修改这段代码， 使得异步输出0~4
         for (var i = 0; i < 5; i++) {
-            // setTimeout(function () {
-            console.log(i);
-            // }, 0);
+            setTimeout(function(i) {
+                console.log(i);
+            }.bind(null, i), 0);
         }
 
         // 回顾一下前面的原型，如何将Array.prototype.map作用在字符串上用一行代码实现让一个字符串的每个字符出现两次
